@@ -3,11 +3,10 @@ spring:
    name: product-app
 
   datasource:
-       url: jdbc:mysql://localhost:3306/sbms
+       url: jdbc:mysql://mysql:3306/sbms
        username: root
        password: root
        driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
        hibernate:
          ddl-auto: update
