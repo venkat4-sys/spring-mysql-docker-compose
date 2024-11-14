@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  app:
+    image: product-app
+    ports:
+      - "9091:9091"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sbms
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sbms
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+networks:
+  app-network:
+
+volumes:
+  mysql_data:
