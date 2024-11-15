@@ -1,17 +1,6 @@
 spring:
   application:
     name: product-app
-
-  datasource:
-    url: jdbc:mysql://mysql:3306/sbms
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
 server:
   port: 9091
 
