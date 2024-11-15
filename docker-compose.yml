@@ -5,18 +5,15 @@ services:
     image: product-app
     ports:
       - "9091:9091"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sbms
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       - mysql
     networks:
       - app-network
+    volumes:
+      - app_data:/data/springboot-app
 
   mysql:
-    image: mysql:8.0
+    image: mysql:8.0.13
     container_name: mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -35,3 +32,4 @@ networks:
 
 volumes:
   mysql_data:
+  app_data:
